@@ -1,3 +1,5 @@
+#pragma once
+
 #include<iostream>
 template<class T>
 struct TLink {
@@ -21,12 +23,12 @@ public:
 	void Push(T a);
 	T Pop();
 	T Top();
-	void clear_stack();
+	void Clear();
 };
 
 
 template<class T>
-void Stack<T>::clear_stack()
+void Stack<T>::Clear()
 {
 	while (pFirst != NULL)
 	{
