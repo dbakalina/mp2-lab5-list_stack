@@ -1,6 +1,7 @@
 #pragma once
 
 #include<iostream>
+
 template<class T>
 struct TLink {
 	T val;
@@ -134,21 +135,31 @@ bool Stack<T>:: operator == (const Stack<T>& s)
 	}
 	return true;
 }
-
-
 template <class T>
 bool Stack<T>:: operator != (const Stack<T>& s)
 {
 	return !(*this == s);
 }
-
-
 template <class T>
 bool Stack<T>::Empty()
 {
 	return pFirst == NULL;
 }
-
+template <class T>
+void Stack<T>::Push(T a)
+{
+	TLink<T>* tmp = new TLink<T>;
+	tmp->val = a;
+	tmp->pNext = pFirst;
+	pFirst = tmp;
+}
+template <class T>
+T Stack<T>::Top()
+{
+	if (pFirst == NULL)
+		throw NULL;
+	return pFirst->val;
+}
 template <class T>
 T Stack <T>::Pop()
 {
@@ -159,22 +170,4 @@ T Stack <T>::Pop()
 	pFirst = tmp->pNext;
 	delete tmp;
 	return elem;
-}
-
-template <class T>
-void Stack<T>::Push(T a)
-{
-	TLink<T>* tmp = new TLink<T>;
-	tmp->val = a;
-	tmp->pNext = pFirst;
-	pFirst = tmp;
-}
-
-
-template <class T>
-T Stack<T>::Top()
-{
-	if (pFirst == NULL)
-		throw NULL;
-	return pFirst->val;
 }

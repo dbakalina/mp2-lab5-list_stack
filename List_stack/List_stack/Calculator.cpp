@@ -1,13 +1,40 @@
 #include"../List_stack/Stack.h"
 #include "../List_stack/Calculator.h"
 #include <string>
+#include<cmath>
 #include <iostream>
 
 using namespace std;
 
 void TCalculator::SetFormula(string str)
 {
-	infix = "";
+	infix = " ";
+	for (unsigned int i = 0; i < str.size(); i++)
+	{
+		if (str[i] == 's' || str[i] == 'c' || str[i] == 'e' || str[i] == 'l')
+		{
+			infix += " ";
+			infix += str[i];
+			i += 3;
+			if (i >= str.size() - 2)
+				throw 0;
+		}
+		else
+		{
+			if (Priority(str[i]) != 0)
+			{
+				infix += " ";
+			}
+			infix += str[i];
+		}
+
+	}
+	infix += ' ';
+	if (CheckBrackets() != true)
+	{
+		throw 0;
+	}
+	/*infix = "";
 	for (unsigned int i = 0; i < str.size(); i++)
 	{
 		if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/' || str[i] == '^')
@@ -23,7 +50,7 @@ void TCalculator::SetFormula(string str)
 	Stack<char> s(infix.size());
 	Stack<double> d(str.size());
 	st_c = s;
-	st_d = d;
+	st_d = d;*/
 }
 
 

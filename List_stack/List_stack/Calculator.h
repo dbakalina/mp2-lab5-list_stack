@@ -2,18 +2,16 @@
 #include "../List_stack/Stack.h"
 #include <iostream>
 #include <string>
-using namespace std;
-
 class TCalculator
 {
-	string infix;
-	string postfix;
+	std::string infix;
+	std::string postfix;
+public:
+	void SetFormula(std::string str);
+	double CalcPostfix();
+	int Priority(char elem);
 	Stack<char> st_c;
 	Stack<double> st_d;
 	void ToPostfix();
 	bool CheckBrackets();
-	int Priority(char elem);
-public:
-	void SetFormula(string str);
-	double CalcPostfix();
 };
