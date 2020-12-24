@@ -1,6 +1,6 @@
 #include "gtest.h"
-#include "../Stack/Calculator.h"
-#include "../Stack/Calculator.cpp"
+#include "../List_stack/Calculator.h"
+#include "../List_stack/Calculator.cpp"
 
 TEST(Calculator, can_create_a_calculator)
 {
@@ -9,20 +9,20 @@ TEST(Calculator, can_create_a_calculator)
 TEST(Calculator, can_pass_a_string_to_the_calculator)
 {
     TCalculator calc;
-    std::string str = "1+5*2";
+    std::string str = "2+6*4";
     ASSERT_NO_THROW(calc.SetFormula(str));
 }
 TEST(Calculator, can_pass_the_correct_string_with_parentheses_to_the_calculator)
 {
     TCalculator calc;
-    std::string str = "(1+5)*2";
+    std::string str = "(2+6)*4";
     ASSERT_NO_THROW(calc.SetFormula(str));
 }
 
 TEST(Calculator, passing_a_formula_with_incorrectly_placed_parentheses_to_the_calculator_will_cause_an_exception)
 {
     TCalculator calc;
-    std::string str = "(1+5*2";
+    std::string str = "(2+6*4";
     ASSERT_ANY_THROW(calc.SetFormula(str));
 }
 TEST(Calculator, can_calculate_the_result_of_an_arithmetic_expression)
